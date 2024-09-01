@@ -12,12 +12,21 @@ function playMusic() {
     audio.play();
 }
 function cv() {
+    let y = 0
+    let x = 0;
     for (let i = 0; i < 400; i++) {
         let morba3 = document.createElement("div");
         morba3.classList.add("morba3");
+        morba3.id = [x, y]
         oui.appendChild(morba3);
+        // console.log(morba3.id);
+        x++;
+        if (x >= 20) {
+            x = 0;
+            y++;
+        }
     }
-    playMusic()
+    // playMusic()
     Xmark();
 }
 
@@ -38,15 +47,15 @@ function checkPlayers(){
 let cxo = "X";
 function Xmark(){
     let buttons = document.querySelectorAll(".morba3");
-    // console.log(buttons)
     buttons.forEach((btn) => {
         btn.addEventListener("click", function () {
+            console.log(btn.id)
             if (btn.textContent == "") {
                 console.log(cxo)
                 btn.textContent = cxo;
                 cxo = (cxo == "X") ? "O" : "X";
                 xoAudio()
-                console.log(cxo)
+                // console.log(cxo)
             }
         });
     })
